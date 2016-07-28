@@ -5,6 +5,11 @@ body{
   color: #888;
 }
 
+blockquote p em {
+  font-style: normal;
+  color: red;
+}
+
 em, h1 {
   color: black;
 }

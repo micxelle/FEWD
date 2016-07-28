@@ -1,0 +1,102 @@
+body {
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: blanchedalmond;
+  margin: 30px;
+  padding: 60px;
+  border-bottom: 5px solid grey;
+  border-top: 5px solid grey;
+}
+
+a{
+  color: red;
+  font-weight: bold;
+}
+
+small {
+  color: black;
+  font-size: 1.5;
+  letter-spacing: normal;
+  font-weight: lighter;
+}
+
+strong {
+  color: black;
+  font-size: 2;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: underline;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+h1{
+    font-weight: bolder;
+    font-style: normal;
+    font-family: sans-serif;
+    color: black;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+p{
+  font-family: georgia, serif;
+  margin-top: 0;
+  margin-bottom: 27px;
+  color: black;
+  text-align: center;
+}
+
+ul p{
+color: black;
+text-align: center;
+
+}
+h2{
+    color:black;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-transform: capitalize;
+  }
+
+nav{
+  text-align: center;
+  color:black;
+  font-family: bold;
+}
+
+hr {
+  color: #888;
+  line-height: 1.5;
+}
+
+avatar{
+  float:right;
+  
+}
+
+img {
+  float: inherit;
+  padding: 20px;
+  margin: 10px 20px 10px;
+  text-align: center;
+}
+
+ol{
+  color: #803020;
+  font-weight: 600;
+}
+
+li{
+  text-align:  center;
+  color: grey;
+  padding: 5px;
+}
+
+h4{
+    text-align: center;
+    color: black;
+    font-style: oblique;
+}
