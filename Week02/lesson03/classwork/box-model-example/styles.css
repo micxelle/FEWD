@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  /*box-sizing: border-box;*/
+}
+
+main {
+  font-size: 0px;
+}
+
+p {
+  display: inline-block;
+  width: 50%;
+  padding: 50px;
+  background-color: cadetblue;
+  font-size: 24px;
+}
+
+/*This little example illustrates two fundamental concepts. The first one is the border-box implementation of
+the Box Model.
+
+Ignore the CSS for <main> for the moment. Look at the CSS for <p>. You've set them to be inline-block so that they sit
+side-by-side on the page and then of course you've changed their widths to 50% (remember, block elements are 100% wide
+by default). So why aren't they sitting side-by-side??? If you open this page up in Chrome and then open the Dev Tools
+(right-click somewhere on the page and select "Inspect"), you can see by resizing the browser window what the exact size
+of the window is (note the changing numbers in the upper-right corner). Let's say I set my window to be 900px wide.
+Now, if I hover over one of the <p> tags, notice the width and height that Chrome says the elements are (a little black
+square near the upper-left of the paragraph should show up). It says my <p>'s are 550px wide. But why is that? Surely,
+If I've asked them to be 50% and the browser window is 900px wide, they should each be 450px wide right?
+
+Wrong. The original designers of the web were a bit silly and decided that padding and margins should be added to the
+outside of the elements, not inside. Which means that the real width of the <p>'s is 50px(padding-left) + 450px (for the
+actual content) + 50px(padding-right). So the TOTAL (or REAL) width of the element isn't what I specified in the CSS (50% of 900),
+but rather 550px.
+
+Now uncomment line 3 of this file. Reload the page in your browser. Notice how now the boxes sit side-by-side now!
+What "box-sizing: border-box" does is change the Box Model of the browser so that it adds the padding
+(and borders, should there be any, but there isn't in this example) to the INSIDE of the element instead of the OUTSIDE.
+
+So now, if you hover one of the <p> tags in the Chrome inspector, you'll see that the width is 450px, which is what we
+intended all along!
+
+Now, on to the second fundamental concept demonstrated in this example. That's the "font-size: 0" hack. Take into account that
+our HTML looks like this:
+
+<main>
+  <p>Mary had a little lamb</p>
+  <p>The wheels on the bus</p>
+</main>
+
+... what you may not realise is that when you hit the Enter (or Return) key between the first close </p> and the second
+opening <p>, an invisible character is actually encoded called the newline character. Computers don't have a natural
+understanding of spaces meaning "nothing" like we do. Instead spaces need to be represented somehow. That's where the newline
+character (or even the space/non-breaking space character) comes in. However text editors like Atom and web browsers like
+Chrome know that showing us all the secretly encoded spaces and newlines would be distracting from the "real" code, so they
+don't bother showing it to us.
+
+So basically, in reality, our HTML looks something like this:
+
+<main>&NewLine;
+&nbsp;&nbsp;<p>Mary had a little lamb</p>&NewLine;
+&nbsp;&nbsp;<p>The wheels on the bus</p>&NewLine;
+</main>
+
+However it's only one of the encoded characters that causes our layout trouble, and that's the one sitting between the
+two supposedly side-by-side paragraphs, so let's look at the HTML with only the problem encoded character highlighted:
+
+<main>
+  <p>Mary had a little lamb</p>&NewLine;
+  <p>The wheels on the bus</p>
+</main>
+
+That "&NewLine;" character that sits between the two paragraphs actually takes up a little bit of room in the layout,
+about 1px. Which is why, if you were to uncomment line 7 in this CSS (even if you kept line 3 active, which as we saw
+before is important to the layout too), you'd see that the two paragraphs would be the right widths for the maths to
+work out (450px each when the screen is 900px wide), but that they'd still be stacked on top of eachother.
+
+That's because the "&NewLine;" is taking up 1 little pixel of width that messes up all the maths. So, we're going to
+"neturalise" the "&NewLine;" character by making its font-size: 0. However, as there's no CSS that allows us to target
+the "&NewLine;" character directly, we're forced to get creative and instead target the parent element of the "&NewLine;",
+that is, the <main>. As you can see above, on line 68 of this file, the "&NewLine;" doesn't sit INSIDE one of the <p></p>,
+it merely sits between them, which is why <main> is its parent.
+
+Which is where line 7 of this CSS file comes in. We make the font-size of <main> be 0. And all is solved with the world,
+right? Wrong. As you've stripped the font-size of their parent down to nothing, the paragraphs are affected by line 7.
+Which means that you now need to add some valid font-size to the <p>'s themselves or otherwise you won't be able to see
+their text. Enter line 15 of this file.
+
+To summarise: the "&NewLine;" is inside of <main> and has a font-size of 0 so that it can't mess up the layout.
+The two <p>'s are also inside of <main> and so, would also have no visible font, if it weren't for the fact that on
+line 15 we explicity set a proper font-size for the two paragraphs directly.*/
